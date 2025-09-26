@@ -230,9 +230,9 @@ This ProDev Backend Engineering program has been transformative in developing:
 
 ## 📞 Contact & Collaboration
 
-- **GitHub**: [alx-project-nexus](https://github.com/yourusername/alx-project-nexus)
-- **Discord**: #ProDevProjectNexus
-- **Email**: [your-email@example.com]
+- **GitHub**: [alx-project-nexus](https://github.com/MohamedKhaliel/alx-project-nexus.git)
+- **Discord**: #ALXProDevProgram
+- **Email**: [mohamedahmed201131@gmail.com]
 
 ---
 
@@ -240,6 +240,6 @@ This ProDev Backend Engineering program has been transformative in developing:
 
 ---
 
-**Last Updated**: December 2024  
+**Last Updated**: September 2025 
 **Version**: 1.0.0  
 **Status**: Active Development
