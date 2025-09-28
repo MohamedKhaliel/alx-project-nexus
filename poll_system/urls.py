@@ -1,23 +1,27 @@
 """
-URL configuration for poll_system project.
+URL configuration for polls app.
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('polls.urls')),
+    # Authentication
+    path('auth/register/', views.register_user, name='register'),
+    path('auth/login/', views.login_user, name='login'),
+    path('auth/logout/', views.logout_user, name='logout'),
     
-    # API Documentation
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    # Poll management
+    path('polls/', views.PollListView.as_view(), name='poll-list'),
+    path('polls/<uuid:poll_id>/', views.PollDetailView.as_view(), name='poll-detail'),
+    
+    # Voting
+    path('polls/<uuid:poll_id>/vote/', views.cast_vote, name='cast-vote'),
+    path('polls/<uuid:poll_id>/results/', views.poll_results, name='poll-results'),
+    
+    # User-specific endpoints
+    path('user/polls/', views.user_polls, name='user-polls'),
+    path('user/votes/', views.user_votes, name='user-votes'),
+    path('user/profile/', views.user_profile, name='user-profile'),
+    path('test-auth/', views.test_auth, name='test-auth'),
+    path('debug-auth/', views.debug_auth, name='debug-auth'),
 ]
-
-# Serve media files in development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
